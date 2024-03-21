@@ -8,9 +8,17 @@ function App() {
 
   const [bookmarks, setBookmarks] = useState([]) 
 
+  const [spentTime, setSpentTime] = useState(0)
+
   const bookmarksHandler = book =>{
     const newBookMarks = [...bookmarks, book]
     setBookmarks(newBookMarks)
+  }
+
+
+  const spentTimeHandler = time =>{
+    const newTime = spentTime + time
+    setSpentTime(newTime)
   }
  
   return (
@@ -18,8 +26,8 @@ function App() {
       <Header></Header>
 
       <div className='md:flex'>
-        <Blogs bookmarksHandler={bookmarksHandler}></Blogs>
-        <Bookmarks bookmarks={bookmarks}></Bookmarks>
+        <Blogs spentTimeHandler={spentTimeHandler} bookmarksHandler={bookmarksHandler}></Blogs>
+        <Bookmarks spentTime={spentTime} bookmarks={bookmarks}></Bookmarks>
       </div>
 
     </div>
